@@ -7,17 +7,75 @@
 
 using namespace std;
 
+int count=0;
 struct MedRec  
 {
     string Name;
-    string location;
-    double price;
-    int freq;
-    int alert;
-    
+    int Location;
+    int Stock;
+    double Price;
+    int Freq;
+    bool Alert;
+    string Exp;
+    bool Exp_Alert
 };
 
-void displayMenu(MedRec medicines[100])
+int end()
+{
+    return 0;
+}
+
+void add_record (MedRec medicines[10], int count)
+{
+MedRec temp;
+
+string name;
+int location = count;
+int stock;
+double price;
+int freq = 0;
+bool alert = false
+string exp;
+bool exp_alert = false;
+if(location == 10)
+{
+    cout << "Error, array has been exceded!!" << endl;
+    return;
+}
+count ++;
+
+cout << "Please enter the medicine name" << endl;
+    cin >> name;
+    temp.Name = name;
+    temp.Location = location;
+cout << "Please enter the medicine name" << endl;
+    cin >> stock;
+    temp.Stock = stock;
+cout << "Please enther the price of medicine" << endl;
+    cin >> price;
+    temp.Price = price;
+    temp.Freq = freq;
+    temp.Alert = alert;
+cout << "Please enter the expiry date of medicine" << endl;
+    cin >> exp;
+    temp.Exp = exp;
+    temp.Exp_Alert = exp_alert
+students[location] = temp;
+
+}
+
+void save (MedRec medicines [], int count)
+{
+    ofstream file;
+    file.open("MedicinesRecords.txt");
+    for(int p =0; p <=limit; p++)
+    {
+        file << medicines[p].Name<< " " << medicines[p].Location << " " << medicines[p].Stock<< " " << medicines[p].Price<< " " << medicines[p].Freq<< " "<< students[p].Alert<< " " << students[p].Exp<< " " << medicines[p].Exp_Alert<< endl;
+    }
+    file.close ();
+}
+
+void displayMenu(MedRec medicines[10])
 {
     cout << "Medicines Records / Autopharm" << endl;
     cout << endl;
@@ -25,6 +83,7 @@ void displayMenu(MedRec medicines[100])
     cout << "(1) Add a medicine record" << endl;
     cout << "(2) Delete a medicine record" << endl;
     cout << "(3) Find a medicine's information" << endl;
+    cout << "(4) Dispence a medicine" << endl;
     cout << "(4) Display all information in the database" << endl;
     cout << "(5) Exit Program" << endl;
     int input;
@@ -37,8 +96,8 @@ void displayMenu(MedRec medicines[100])
     }
     switch(input)
     {
-        case 1: addsrecord(medicines);
-                save(medicines);
+        case 1: add_record(medicines, count);
+                save(medicines, count);
                 break;
         case 2: delete_record;
                 break;
@@ -56,8 +115,8 @@ void displayMenu(MedRec medicines[100])
 int main()
 {
 //char key;
-MedRec medicines[100];
-read_a_record(medicines);
+MedRec medicines[10];
+//read_a_record(medicines, count);
 do
 {
     displayMenu(medicines);
